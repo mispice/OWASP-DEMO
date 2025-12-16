@@ -33,23 +33,35 @@ export default function DosDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-green-400 font-mono p-8">
-      <div className="grid grid-cols-2 gap-8">
+    <div className="min-h-screen bg-black text-green-400 font-mono p-4 md:p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         
         {/* Left: The Innocent User */}
-        <div className="border border-green-700 p-6 rounded">
+        <div className="border border-green-700 p-6 rounded flex flex-col">
           <h2 className="text-2xl mb-4 text-white">The "Booking" Site</h2>
-          <div className={`p-2 mb-4 text-center font-bold text-black ${status.includes('OFFLINE') ? 'bg-red-500' : 'bg-green-500'}`}>
-            System Status: {status}
-          </div>
-          <p>Active Connections: {serverLoad} / 50</p>
-          <div className="w-full bg-gray-800 h-4 mt-2 rounded overflow-hidden">
-             <div className="h-full bg-green-500 transition-all duration-200" style={{width: `${(serverLoad/50)*100}%`}}></div>
-          </div>
+          
+          {status.includes('OFFLINE') ? (
+            <div className="flex-1 flex flex-col items-center justify-center bg-red-950/50 border-2 border-red-600 rounded p-6 text-center animate-pulse">
+                <div className="text-6xl mb-4">⚠️</div>
+                <h3 className="text-3xl font-bold text-red-500 mb-2">503 Error</h3>
+                <p className="text-xl text-white font-bold">Service Unavailable</p>
+                <p className="text-gray-400 mt-4 text-sm">The server is currently unable to handle the request due to a temporary overload.</p>
+            </div>
+          ) : (
+            <>
+              <div className={`p-2 mb-4 text-center font-bold text-black ${status.includes('OFFLINE') ? 'bg-red-500' : 'bg-green-500'}`}>
+                System Status: {status}
+              </div>
+              <p>Active Connections: {serverLoad} / 50</p>
+              <div className="w-full bg-gray-800 h-4 mt-2 rounded overflow-hidden">
+                 <div className="h-full bg-green-500 transition-all duration-200" style={{width: `${(serverLoad/50)*100}%`}}></div>
+              </div>
 
-          <button onClick={bookLegitimate} className="mt-8 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 w-full">
-            Book 1 Lesson (Normal User)
-          </button>
+              <button onClick={bookLegitimate} className="mt-8 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 w-full">
+                Book 1 Lesson (Normal User)
+              </button>
+            </>
+          )}
         </div>
 
         {/* Right: The Attacker */}

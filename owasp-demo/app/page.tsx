@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col items-center justify-center p-8 font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col items-center justify-center p-4 md:p-8 font-sans">
       <div className="max-w-2xl w-full space-y-12 text-center">
         
         <div className="space-y-4">
-          <h1 className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             OWASP DEMO
           </h1>
-          <p className="text-xl text-slate-400">Interactive Security Presentation</p>
+          <p className="text-lg md:text-xl text-slate-400">Interactive Security Presentation</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-8 border-t border-slate-800">
